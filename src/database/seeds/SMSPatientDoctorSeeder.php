@@ -28,8 +28,8 @@ class SMSPatientDoctorSeeder extends Seeder
                 'user_id' => null, 
                 'patient_id' => $patient->id,
 
-                'number_from' => $companyNumber, 
-                'number_to' => $patient->phone,
+                'number_from' => $companyNumber->phone, 
+                'number_to' => $patient->phones,
 
                 'direction' => 'inbound', 
                 'message_text' => 'Повідомлення від пацієнта: ' . Str::random(10),
@@ -44,8 +44,8 @@ class SMSPatientDoctorSeeder extends Seeder
             DB::table('messages')->insert([
                 'user_id' => $randomUser->id,
                 'patient_id' => $patient->id,
-                'number_from' => $companyNumber,
-                'number_to' => $patient->phone,
+                'number_from' => $companyNumber->phone,
+                'number_to' => $patient->phones,
                 'direction' => 'outbound',
                 'message_text' => 'Повідомлення від системи: ' . Str::random(10),
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
@@ -54,3 +54,5 @@ class SMSPatientDoctorSeeder extends Seeder
         }
     }
 }   
+
+?>

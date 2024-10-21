@@ -37,3 +37,5 @@ class CreateMessagesTable extends Migration
         Schema::dropIfExists('messages');
     }
 }
+
+?>

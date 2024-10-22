@@ -28,5 +28,6 @@
   "/js/forms-plugins.js": "/js/forms-plugins.js",
   "/js/forms-plugins.css": "/js/forms-plugins.css",
   "/js/document_download.js": "/js/document_download.js",
-  "/js/tabs-supervising.js": "/js/tabs-supervising.js"
+  "/js/tabs-supervising.js": "/js/tabs-supervising.js",
+  "/mix.js": "/mix.js"
 }

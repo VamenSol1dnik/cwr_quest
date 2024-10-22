@@ -684,14 +684,6 @@ Route::prefix('assessment-forms')->middleware(['user-provider', 'profile-complet
     Route::get('/{id}', 'AssessmentFormsController@get');
 });
 
-Route::get('/sms-chat', function () {
-    return view('sms-chat');
-});
-
-Route::get('/sms/messages/{patient}', 'SMSController@getMessages');
-Route::post('/sms/messages', 'SMSController@sendMessage');
-Route::get('/sms/phone-numbers/{patient}', 'SMSController@getPhoneNumbers');
-
 Route::get('past-appointments', function () {
     return view('layouts.app');
 })->middleware(['user-provider', 'profile-completed'])->name('past-appointments');

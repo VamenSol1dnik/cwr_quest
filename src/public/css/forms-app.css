@@ -3307,7 +3307,6 @@ label {
 
 input[type="search"] {
   box-sizing: border-box;
-  -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
 }
@@ -7256,7 +7255,6 @@ button.close {
   cursor: pointer;
   background: transparent;
   border: 0;
-  -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
 }
@@ -10684,7 +10682,6 @@ i.el-input__icon {
   min-height: 30px;
   outline: none;
   padding-left: 6px;
-  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: #fff;

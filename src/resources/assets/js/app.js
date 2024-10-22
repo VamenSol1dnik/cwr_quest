@@ -8,6 +8,7 @@ import Vuex from 'vuex';
 import VeeValidate from 'vee-validate';
 import store from './store';
 import moment from "moment-timezone";
+import ChatComponent from './components/ChatComponent.vue';
 import VueMomentJS from "vue-momentjs";
 import VueRouter from "vue-router";
 import routes from "./routes";
@@ -330,13 +331,6 @@ Vue.component('provider-profile-checkbox-group', require('./components/provider-
 
 Vue.component('send-sms-to-change-signature-modal', require('./components/SendSmsToChangeSignatureModal.vue'));
 
-const app = new Vue({
-    el: '#app',
-    store,
-    router,
-    mixins: [DevelopMode]
-});
-
 $(document).ready(function () {
 
     $(window).resize(function () {
@@ -443,6 +437,13 @@ $(document).ready(function () {
 
     $('[data-submenu]').submenupicker();
 });
+
+const app = new Vue({
+    el: '#app',
+    components: {
+      ChatComponent
+    }
+  });
 
 require('./user-roles');
 window.isIE = navigator.userAgent.match(/(MSIE|Trident|Edge)/);

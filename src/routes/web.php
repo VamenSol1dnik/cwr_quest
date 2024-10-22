@@ -464,6 +464,10 @@ Route::get('/document-download-page/{documentName}', 'PatientDocumentController@
 Route::post('/document-download-page', 'PatientDocumentController@downloadDocument')->name('document-download.download');
 Route::get('/document-download-success', 'PatientDocumentController@downloadSuccess')->name('document-download.success');
 
+Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index']);
+Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
+Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
+
 
 Route::prefix('patient')->middleware(['user-provider', 'profile-completed'])->group(function () {
 

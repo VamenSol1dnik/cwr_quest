@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Patient\PatientTag;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ChatsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -342,7 +343,7 @@ Route::namespace('Api')->group(function () {
         Route::get('billing-periods', 'System\BillingPeriodController@index');
     });
 
-    Route::post('/webhook/twilio/sms', 'Webhook\Twilio\SmsController@sms');
+    Route::get('/sms-messages', [SMSController::class, 'getSMSMessages']);
 
     Route::prefix('secretaries-dashboard')->middleware(['admin-secretary'])->group(function () {
         Route::get('important-for-today', 'SecretariesDashboardController@getImportantForToday');

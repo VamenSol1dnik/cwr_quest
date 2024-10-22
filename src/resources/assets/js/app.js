@@ -6,9 +6,9 @@ require('intersection-observer');
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VeeValidate from 'vee-validate';
-import store from './store';
+import _store from './store';
 import moment from "moment-timezone";
-import ChatComponent from './components/ChatComponent.vue';
+import _SMSChat from './components/SMSChat.vue';
 import VueMomentJS from "vue-momentjs";
 import VueRouter from "vue-router";
 import routes from "./routes";
@@ -17,7 +17,7 @@ import fullCalendar from 'vue-fullcalendar';
 import 'nodep-date-input-polyfill';
 import VueScrollTo from 'vue-scrollto';
 import Datepicker from 'vuejs-datepicker';
-import DevelopMode from './mixins/develop_mode';
+import _DevelopMode from './mixins/develop_mode';
 import {
     DatePicker,
     Select,
@@ -330,6 +330,8 @@ Vue.component('loading-overlay', require('./components/LoadingOverlay.vue'));
 Vue.component('provider-profile-checkbox-group', require('./components/provider-profile/ProviderProfileCheckboxGroup.vue'));
 
 Vue.component('send-sms-to-change-signature-modal', require('./components/SendSmsToChangeSignatureModal.vue'));
+
+
 
 $(document).ready(function () {
 

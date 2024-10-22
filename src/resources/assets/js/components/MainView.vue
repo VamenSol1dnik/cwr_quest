@@ -686,6 +686,25 @@
                            Alerts ({{notifications_count}}) 
                         </div>
                     </div>
+                    <div class="chart-tab" :class="{active: tabs.notifications.active}"
+                         @click="changeTab('sms')">
+                         <div class="chart-tab-title">
+                           SMS ({{sms_count}}) 
+                        </div>
+                    </div>
+                </div>
+                <div v-if="tabs.sms.active">
+                    <h3>SMS Messages</h3>
+                    <div v-if="smsMessages.length > 0">
+                        <ul>
+                            <li v-for="message in smsMessages" :key="message.id">
+                            {{ message.text }} - <small>{{ message.created_at }}</small>
+                            </li>
+                        </ul>
+                    </div>
+                    <div v-else>
+                    No SMS messages found.
+                    </div>
                 </div>
 
             </div><!--/.new-profile-wrapper-->
@@ -1511,6 +1530,7 @@
     import ChangeVisitsFrequencyModal from "./main-view/ChangeVisitsFrequencyModal";
     import KaiserReferrals from "./documents/kaiser/KaiserReferrals.vue";
     import AddFormDropdown from "./main-view/AddFormDropdown";
+    import _SmsMessaging from './SmsMessaging.vue';
     import CancellationFeeRestrictions from './appointments/CancellationFeeRestrictions';
     import DownloadDocs from "./dashboard/components/DownloadDocs";
     import PatientTags from "./PatientTags.vue";
@@ -1534,6 +1554,13 @@
 
         data() {
             return {
+                smsMessages: [], 
+                sms_count: 0,  
+                tabs: {
+                    sms: {
+                        active: false
+                         }
+                        },
                 emailFormData: {
                     patient_email: '',
                     patient_secondary_email: ''
@@ -1586,6 +1613,7 @@
                 is_init: true,
                 office_ally_href: OFFICE_ALLY_BASE_HREF,
                 upheal_href: UPHEAL_BASE_HREF,
+            
                 tabs: {
                     chart: {
                         active: false,
@@ -1616,6 +1644,9 @@
                     },
                     patient_card_transactions:{
                         count: 0,
+                    },
+                    sms: { active: false 
+
                     }
 
                 },
@@ -2179,6 +2210,34 @@
                 });
                 $('#add-patient-provider-modal').modal('show');
             },
+
+            changeTab(tabName) {
+            
+                for (let tab in this.tabs) {
+                    this.tabs[tab].active = false;
+            }
+
+            
+            this.tabs[tabName].active = true;
+
+            
+            if (tabName === 'sms') {
+            
+            this.loadSMSMessages();
+            }
+        },
+        
+            loadSMSMessages() { 
+                fetch('/api/sms') 
+      .then(response => response.json())
+      .then(data => {
+        this.sms_count = data.count; 
+        this.smsMessages = data.messages; 
+      })
+      .catch(error => {
+        console.error("Error while downloading SMS:", error);
+      });  
+        },
 
             addPatientProviderRelationship() {
                 let payload = {

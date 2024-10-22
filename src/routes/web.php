@@ -684,6 +684,10 @@ Route::prefix('assessment-forms')->middleware(['user-provider', 'profile-complet
     Route::get('/{id}', 'AssessmentFormsController@get');
 });
 
+Route::get('/sms-chat', function () {
+    return view('sms-chat');
+});
+
 Route::get('past-appointments', function () {
     return view('layouts.app');
 })->middleware(['user-provider', 'profile-completed'])->name('past-appointments');

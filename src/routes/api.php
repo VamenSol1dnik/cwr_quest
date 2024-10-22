@@ -5,6 +5,7 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Patient\PatientTag;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -391,6 +392,10 @@ Route::namespace('Api')->group(function () {
         Route::get('/', 'SupervisingController@getSupervisors');
         Route::get('/supervisees', 'SupervisingController@getSupervisees');
     });
+
+    Route::get('/messages', [MessageController::class, 'index']);
+    Route::post('/messages', [MessageController::class, 'store']);
+    Route::get('/patient-phone-numbers', [MessageController::class, 'getPatientPhoneNumbers']);
 
     Route::prefix('reauthorization-request-dashboard')->middleware(['admin-secretary'])->group(function () {
         Route::prefix('upcoming-reauthorization-requests')->group(function () {

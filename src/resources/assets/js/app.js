@@ -8,7 +8,6 @@ import Vuex from 'vuex';
 import VeeValidate from 'vee-validate';
 import store from './store';
 import moment from "moment-timezone";
-import ChatComponent from './components/ChatComponent.vue';
 import VueMomentJS from "vue-momentjs";
 import VueRouter from "vue-router";
 import routes from "./routes";
@@ -445,12 +444,7 @@ $(document).ready(function () {
     $('[data-submenu]').submenupicker();
 });
 
-const app = new Vue({
-    el: '#app',
-    components: {
-      ChatComponent
-    }
-  });
+
 
 require('./user-roles');
 window.isIE = navigator.userAgent.match(/(MSIE|Trident|Edge)/);
